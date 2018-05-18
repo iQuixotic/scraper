@@ -6,13 +6,14 @@ var cheerio = require("cheerio");
 var request = require("request");
 var mongoose = require("mongoose");
 var exphbs  = require('express-handlebars');
+const axios = require('axios');
 const app = express();
 
 
 // connecting to controllers and assign them to variable
 // const favourites = require('../../controllers/favourites.js');
-const home = require('../../controllers/home.js');
-const scraper = require('../../controllers/scraper.js')
+// const home = require('../../controllers/home.js');
+const scraper = require('../../scripts/scraper.js')
 // const login = require('../../controllers/login.js');
 // const profile = require('../../controllers/profile.js');
 
@@ -30,6 +31,7 @@ app.get('/status', (req, res) => {
       message: 'This is the test you deserve, but not the one you need right now !!'
     })
 })
+
 
 
 

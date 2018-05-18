@@ -1,15 +1,20 @@
-var cheerio = require("cheerio");
-var request = require("request");
+
+const axios = require('axios');
+const cheerio = require("cheerio");
+const db = require('../models/index')
+
+const request = require("request");
 const express = require("express");
 // const router = express.Router();
 
-
+// axios.get
 let hold;
 console.log("\n******************************************\n" +
     "Amazing Links " +
     "\n******************************************\n");
 
 var site = "https://www.nytimes.com/"
+
 // Making a request for `nhl.com`'s homepage
 request(site, function (error, response, html) {
 
