@@ -1,7 +1,8 @@
 // var mongojs = require("mongojs");
-
 // var databaseUrl = "nycStories";
 // var collections = ["comments"];
+// const app = express();
+
 
 // // Use mongojs to hook the database to the db variable
 // var db = mongojs(databaseUrl, collections);
@@ -13,6 +14,8 @@
 
 
 // app.get("/allnews", function(req, res) {
+
+
     
 //   db.news.find({}, function(error, found) {
       
@@ -63,4 +66,4 @@
 //   });
 // });
 
-
+// });

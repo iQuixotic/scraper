@@ -19,11 +19,11 @@ let ArticleModel = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Comment'
     }
-})
+});
 
 let Article = mongoose.model('Article', ArticleModel);
 
-module.exports = Article
+module.exports = Article;
 
 
 

@@ -4,11 +4,12 @@ const cheerio = require("cheerio");
 const db = require('../models/index')
 
 const request = require("request");
-const express = require("express");
+// const express = require("express");
 // const router = express.Router();
 
-// axios.get
-let hold;
+function scrape() {
+
+
 console.log("\n******************************************\n" +
     "Amazing Links " +
     "\n******************************************\n");
@@ -16,19 +17,19 @@ console.log("\n******************************************\n" +
 var site = "https://www.nytimes.com/"
 
 // Making a request for `nhl.com`'s homepage
-request(site, function (error, response, html) {
+return axios.get(site).then(function(res) {
 
     // Load the body of the HTML into cheerio
-    var $ = cheerio.load(html);
+    var $ = cheerio.load(res.data);
 
     var results = [];
 
     // target a div that contains information needed for headlines and summaries
-    $(".theme-summary").each(function (i, element) {
+     $(".theme-summary").each(function (i, element) {
 
         // drill in to grab title, summary, and link using cheero
-        var title = $(element).children('.story-heading').text();
-        var summary = $(element).children('.summary').text();
+        let title = $(element).children('.story-heading').text().trim();
+        let summary = $(element).children('.summary').text().trim();
         // let link = $(element).children().attr('href');
 
         // only use if all three are available
@@ -40,9 +41,10 @@ request(site, function (error, response, html) {
         });
     }
         
-        hold=results;
+        
     });
-    console.log(results);
+    return results;
 });
+}
 
-module.exports = {hold}
+module.exports = scrape;
