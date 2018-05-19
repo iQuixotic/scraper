@@ -21,9 +21,9 @@ let ArticleModel = new Schema({
     }
 })
 
-let Article = mongoose.model('Article', ArcticleModel);
+let Article = mongoose.model('Article', ArticleModel);
 
-module.exports = Aricle
+module.exports = Article
 
 
 

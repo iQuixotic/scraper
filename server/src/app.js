@@ -13,7 +13,7 @@ const app = express();
 // connecting to controllers and assign them to variable
 // const favourites = require('../../controllers/favourites.js');
 // const home = require('../../controllers/home.js');
-const scraper = require('../../scripts/scraper.js')
+const scraper = require('../scripts/scraper.js')
 // const login = require('../../controllers/login.js');
 // const profile = require('../../controllers/profile.js');
 
