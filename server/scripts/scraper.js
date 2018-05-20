@@ -1,15 +1,11 @@
 
 const axios = require('axios');
 const cheerio = require("cheerio");
-const db = require('../models/index')
-
+const db = require('../models/index.js')
 const request = require("request");
-// const express = require("express");
-// const router = express.Router();
+
 
 function scrape() {
-
-
 console.log("\n******************************************\n" +
     "Amazing Links " +
     "\n******************************************\n");
@@ -27,7 +23,7 @@ return axios.get(site).then(function(res) {
     // target a div that contains information needed for headlines and summaries
      $(".theme-summary").each(function (i, element) {
 
-        // drill in to grab title, summary, and link using cheero
+        // drill in to grab title, summary, and link using cheerio
         let title = $(element).children('.story-heading').text().trim();
         let summary = $(element).children('.summary').text().trim();
         // let link = $(element).children().attr('href');

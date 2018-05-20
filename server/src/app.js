@@ -15,8 +15,10 @@ const app = express();
 // const favourites = require('../../controllers/favourites.js');
 // const home = require('../../controllers/home.js');
 // const db = require('../controllers/connection.js');
+// const routes = require('../routes');
 const scrape = require('../scripts/scraper.js');
-const router = require('../routes/mongoAPI.js');
+const mongoAPI = require('../routes/mongoAPI.js');
+const status = require('../routes/status.js')
 // const login = require('../../controllers/login.js');
 // const profile = require('../../controllers/profile.js');
 
@@ -26,7 +28,8 @@ const router = require('../routes/mongoAPI.js');
 
 // mongoose.connect('mongodb://localhost/my_database');
 
-let connectiondb = mongoose.connect('mongodb://localhost/news_db');
+// mongoose.connect('mongodb://localhost/news_db');
+// api.addAll();
 
 
 // module.exports = {
@@ -41,15 +44,14 @@ app.use(cors());
 // app.use(app.router);
 // routes.initialize(app);
 
-//this is a testing route
-app.get('/status', (req, res) => {
-  res.send({
-      title: 'This is my console test !!',
-      message: 'This is the test you deserve, but not the one you need right now !!'
-    })
-})
+// app.use("/status", api);
 
-
+// app.get('/status', (req, res) => {
+//   res.send({
+//       title: 'This is my console test !!',
+//       message: 'This is the test you deserve, but not the one you need right now !!'
+//   });
+// });
 
 
 //for registering a new user
@@ -62,7 +64,8 @@ app.post('/register', (req, res) => {
 })
 
 // telling the app which controller to use
-// app.use("/", home);
+app.use("/status", status);
+app.use('/alldb', mongoAPI);
 // app.use("/favourites", favourites);
 // app.use("/login", login);
 // app.use("/profile", profile);
