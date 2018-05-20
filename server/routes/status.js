@@ -1,12 +1,9 @@
-const router = require("express").Router();
+// // const express = require('express')
+// const router = require("express").Router();
+// const fetchController = require('../controllers/fetch.js');
 
-//this is a testing route
-router.use((req, res, next) => {
-    res.status(200).json({
-        title: 'This is my console test !!',
-        message: 'This is the test you deserve, but not the one you need right now !!'
-    });
-});
 
-// //   module.exports = addAll
-  module.exports =  router;
+// //this is a testing route
+// router.post('/test', fetchController.test);
+
+// module.exports =  router;

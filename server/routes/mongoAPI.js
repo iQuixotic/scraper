@@ -1,17 +1,14 @@
-const router = require("express").Router();
-const fetch = require('../controllers/fetch.js');
+const express = require('express')
+const router = express.Router();
+const fetchController = require('../controllers/fetch.js');
 
 
-router.use((req, res, next) => {
-    // Grab every document in the Articles collection
-    fetch.db.Article.find({})
-      .then(function(dbArticle) {
-        // If we were able to successfully find Articles, send them back to the client
-        res.json(dbArticle);
-      }).catch(function(err) {
-        // If an error occurred, send it to the client
-        res.json(err);
-      });
-  });
+router.get("/scraper", function (req, res){
+fetchController.findAll(res);
+});
+
+// fetchController.findAll();
+// console.log(fetchController.findAll())
+
 
 module.exports =  router;
