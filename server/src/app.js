@@ -55,13 +55,13 @@ app.use(cors());
 
 
 //for registering a new user
-app.post('/register', (req, res) => {
-  res.send({
-      email: req.body.email,
-      password: req.body.password,
-      message: 'I was working all along !!'
-    })
-})
+// app.post('/register', (req, res) => {
+//   res.send({
+//       email: req.body.email,
+//       password: req.body.password,
+//       message: 'I was working all along !!'
+//     })
+// })
 
 // telling the app which controller to use
 app.use("/status", status);
