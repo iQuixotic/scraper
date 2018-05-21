@@ -2,9 +2,9 @@ const express = require('express')
 const router = express.Router();
 const apiController = require('../../controllers/favorites/favAPI.js');
 
-// // route for displaying json of all scraped files
-// router.get("/show/json-of-scraped", function (req, res){
-// fetchController.findAll(res);
-// });
+// route for posting new favorites from database
+router.post("/favorites", function (req, res){
+apiController.postAll(res);
+});
 
 module.exports =  router;

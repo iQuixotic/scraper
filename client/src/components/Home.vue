@@ -8,7 +8,7 @@
   </div>
 
     <div class='d-flex justify-content-center'>
-      <button @click="getIt()" type="button" class="btn btn-danger">ALL THE THINGS PLEASE</button>
+      <button @click="getIt()" type="button" class="the-things btn btn-danger">ALL THE THINGS PLEASE</button>
 
   </div>
   <div id="to-here"></div>
@@ -25,19 +25,16 @@ export default {
             let id = $(this).attr('id')
             let comment = $('#comment-bar'+id).val();
             
-      //  console.log('i am trying to work')
-            
-      //       console.log(id);
-      //       console.log(comment);
-            let data = {
+            // something to hold data object
+            let sasquatch = {
               Comment: comment,
               ArticleID: id
             }
-            console.log(data);
+            console.log(sasquatch);
 
             $.ajax({
                 type: 'POST',
-                data: data,
+                data: sasquatch,
                 url: 'http://localhost:8082/show/json-update',
                 dataType: 'json',
                 success: function (data) {
@@ -74,10 +71,12 @@ export default {
                     console.log('I did it !!!')
                     for(var i=0;i<data.length;i++) {
 
-                    $("#to-here").append("<div class='card'><div class='card-body'>" +
+                      // for each result, I will print out a styled card
+                    $("#to-here").append("<div class='container'><div class='col-md-9'<div class='card'><div class='card-body'>" +
                     "<h3 class='card-title'>"+ data[i].title + "</h3><p class='card-text'>" +
                     data[i].summary + "</p></div></div>   <input id='comment-bar"+data[i]._id+"' class=' form-control mr-sm-2' type='search' placeholder='Comment' aria-label='Comment'>" + 
-                    "<button id='"+data[i]._id+"' class='submit-comment btn btn-outline-success my-2 my-sm-0' type='submit'>Comment</button>") 
+                    "<button id='"+data[i]._id+"' class='padding submit-comment' type='submit'>Comment</button>"+
+                    "<button id='fav"+data[i]._id+"' class='padding save' type='submit'>Save</button></div></div>") 
                     }
                 }
             });
@@ -102,18 +101,29 @@ export default {
       //   }
      
 
-
-
-
-
-
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style >
 
+.padding {
+  padding: 15px;
+  margin: 15px;
+}
+.save, .submit-comment, .the-things {
+  color: white;
+  background-color:#222233; 
+  font-size: 1.4em;
+  border-radius: 12px;
+}
+.save {
+    margin-left: 500px;
+}
+.submit-comment {
+  margin-left: 200px;
+}
 h1, h2 {
   font-weight: bold;
 }

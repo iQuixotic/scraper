@@ -18,7 +18,6 @@ const update = require('../routes/main/update.js');
 const favAPI = require('../routes/favorites/apiRoutes.js');
 const favPage = require('../routes/favorites/pageRoutes.js');
 
-
 const  alterController = require('../controllers/main+api/alter.js')
 const commentsController = require('../controllers/main+api/comments.js')
 const fetchController = require('../controllers/main+api/fetch.js');
@@ -46,6 +45,7 @@ app.use((req, res, next) => {
     next(error);
 });
 
+// render error to the page for easier troubleshooting
 app.use((error, req, res, next) => {
   res.status(error.status || 500);
   res.json({
@@ -54,6 +54,7 @@ app.use((error, req, res, next) => {
     }
   })
 });
+// - - - - - - - - - - - - - - - - - - 
 
 //listening port
 const PORT = process.env.PORT || 8082;

@@ -18,11 +18,30 @@ export default {
     }
   }, 
   methods: {
+
+  //   getIt: function () {
+  //           jQuery.ajax({
+  //               type: 'GET',
+  //               url: 'http://localhost:8082/show/json-of-scraped',
+  //               dataType: 'json',
+  //               success: function (data) {
+  //                   console.log('I did it !!!')
+  //                   for(var i=0;i<data.length;i++) {
+
+  //                     // for each result, I will print out a styled card
+  //                   $("#to-here").append("<div class='container'><div class='col-md-9'<div class='card'><div class='card-body'>" +
+  //                   "<h3 class='card-title'>"+ data[i].title + "</h3><p class='card-text'>" +
+  //                   data[i].summary + "</p></div></div>   <input id='comment-bar"+data[i]._id+"' class=' form-control mr-sm-2' type='search' placeholder='Comment' aria-label='Comment'>" + 
+  //                   "<button id='"+data[i]._id+"' class='padding submit-comment' type='submit'>Comment</button>"+
+  //                   "<button id='fav"+data[i]._id+"' class='padding save' type='submit'>Save</button></div></div>") 
     
+  //                }
+  //           }
+  //       });
+  //     }
+    }
   }
-}
-
-
+  
 </script>
 
 
