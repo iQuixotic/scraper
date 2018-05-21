@@ -25,6 +25,19 @@ exports.getComment = (req, res) => {
         // });
 }
 
+// clear out entire comment dbs
+exports.delAllComments = (res) => {
+    db.Comment.remove({})
+        .then(function (dbComment) {
+            res.json({
+                Message: 'You"ve done gone and cleared all the comments !! '
+            });
+        }).catch(function (err) {
+            res.json(err);
+        });
+}
+
+
 // // update comments when they exists
 // exports.hasCommentsUpdate = (res) => {
 //     db.Article.update({hasComments: true, favoriteList: true})

@@ -5,6 +5,7 @@ let CommentModel = new Schema({
 
     Comment: {
         type: String,
+        required: true
     },
     ArticleID: {
         type: String,
