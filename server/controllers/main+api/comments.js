@@ -9,9 +9,9 @@ const scrape = require('../../scripts/scraper.js');
 const db = require('../../models');
 
 // take the data coming in for a comment
-exports.getStat = (req, res) => {
-    console.log(req.body)
-    db.Comment.create(req, res)
+exports.getComment = (req, res) => {
+    console.log(req.body, 'asfasd')
+    db.Comment.create(req.body)
         .then(function (dbComment) {
             res.json(dbComment);
         }).catch(function (err) {

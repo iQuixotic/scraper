@@ -1,4 +1,5 @@
 <template>
+
 <div>
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
@@ -26,37 +27,40 @@ export default {
             let comment = $('#comment-bar'+id).val();
             
             // something to hold data object
-            let sasquatch = {
+            const sasquatch = {
               Comment: comment,
               ArticleID: id
-            }
-            console.log(sasquatch);
+            }           
 
+          
+           ajaxPost(sasquatch);
+
+         
+
+            function ajaxPost(sasquatch) {
             $.ajax({
                 type: 'POST',
                 data: sasquatch,
                 url: 'http://localhost:8082/show/json-update',
-                dataType: 'json',
-                success: function (data) {
-                  console.log(data)
-                    console.log('I did it !!!')
-                                                           
+           
+                success: function (sasquatch) {
+                  console.log(sasquatch)
+                    console.log('I did it !!!')                                                           
                 }
-            });
+            });   
         
-          });
+          };
 
-
+});
         // $(document).on("keyup", ".submit-comment", function (){
         //   if(comment == headline)
         //     console.log(id)
         // });
 
-
   },
   data: {
-       id: '',
-       comment: '',
+      //  id: '',
+      //  comment: '',
       //  headline: ''
   },
 

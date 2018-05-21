@@ -1,13 +1,13 @@
-// packages
+
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const morgan = require('morgan');
-var cheerio = require("cheerio");
-var request = require("request");
-var mongoose = require("mongoose");
-var mongojs = require('mongojs');
+const mongoose = require("mongoose");
+const cors = require('cors');
+const app = express();
+const cheerio = require("cheerio");
+const request = require("request");
+const mongojs = require('mongojs');
 const axios = require('axios');
 
 // files
@@ -24,12 +24,16 @@ const fetchController = require('../controllers/main+api/fetch.js');
 
 //connect to the database news_db on the server
 mongoose.connect('mongodb://localhost/news_db')
-// mongoose.Promise = global.Promise;
+mongoose.Promise = global.Promise;
 
 // use morgan, bodyParser, and cors
-app.use(morgan('combined'));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(morgan("dev"));
 app.use(cors());
+
+
 
 // use routes
 app.use(create);
@@ -54,6 +58,13 @@ app.use((error, req, res, next) => {
     }
   })
 });
+
+// more error handling
+function log(string) {
+  let callerLine = new Error().stack.split("\n")[2];
+  let lineNumber = callerLine.match(/:(\d+):\d+\)/)[1];
+  console.log("Line " + lineNumber + ": " + string);
+}
 // - - - - - - - - - - - - - - - - - - 
 
 //listening port
