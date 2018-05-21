@@ -1,22 +1,6 @@
 <template>
   <div>
-    <h1>Trending</h1>
-  <input id="yes"
-  type="email"
-  name="email"
-
-  placeholder="email">
-  <br>
-  <input 
-  type="password"
-  name="password"
-  v-modal="password"
-  placeholder="password">
-  <br>
-  <button @click="register" >Register</button>
-  <div>
-<input v-model="yes">
-  </div>
+   
   </div>
 </template>
 

@@ -26,13 +26,16 @@ function scrape() {
             let title = $(element).children('.story-heading').text().trim();
             let summary = $(element).children('.summary').text().trim();
             let link = $(element).children().attr('href');
+            let bool = false;
 
             // only use if all three are available
-            if (title && summary) {
+            if (title && summary && link) {
                 results.push({
                     title: title,
                     summary: summary,
-                    link: link
+                    link: link,
+                    favoriteList: bool,
+                    hasComments: bool
                 });
             }
 

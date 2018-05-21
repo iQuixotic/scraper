@@ -4,11 +4,10 @@ const router = express.Router();
 const mongoose = require("mongoose");
 const axios = require('axios');
 
-//files
-const create = require('../routes/create.js')
-const scrape = require('../scripts/scraper.js');
-const db = require('../models');
-
+// files
+const create = require('../../routes/main/create.js')
+const scrape = require('../../scripts/scraper.js');
+const db = require('../../models');
 
 // function for scraping new articles
 exports.addAll = function() {

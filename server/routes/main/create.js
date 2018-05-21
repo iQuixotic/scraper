@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const fetchController = require('../controllers/fetch.js');
+const fetchController = require('../../controllers/main+api/fetch.js');
 
 // route for displaying json of all scraped files
 router.get("/show/json-of-scraped", function (req, res){

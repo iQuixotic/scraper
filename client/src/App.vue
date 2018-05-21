@@ -24,7 +24,7 @@
     </ul>
    <router-link class='navlink' v-bind:to="'/login'"> Login  </router-link>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search">
+      <input  id="headline-finder" class="form-control mr-sm-2" type="search" placeholder="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
     </form>
   </div>
@@ -37,7 +37,18 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  mounted () {
+    
+  },
+  
+    data: {
+
+    },
+    methods: {
+
+    }
+
 }
    
 
@@ -45,14 +56,6 @@ export default {
 </script>
 
 <style>
-/* #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-} */
 .navlink {
   color: white;
   font-size: 120%;

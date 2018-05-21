@@ -18,7 +18,16 @@ let ArticleModel = new Schema({
     comment: {
         type: Schema.Types.ObjectId,
         ref: 'Comment'
-    }
+    },
+    favoriteList: {
+        type: Boolean,
+        required: true
+    }, 
+    hasComments: {
+        type: Boolean,
+        required: true
+    }, 
+                    
 });
 
 let Article = mongoose.model('Article', ArticleModel);

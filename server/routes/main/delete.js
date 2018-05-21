@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router();
-const alterController = require('../controllers/alter.js');
+const alterController = require('../../controllers/main+api/alter.js');
 
 // route for emptying the database and starting completely fresh
 router.get("/empty-the-db", function (req, res){
