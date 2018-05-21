@@ -15,7 +15,9 @@ const scrape = require('../scripts/scraper.js');
 const create = require('../routes/main/create.js');
 const del = require('../routes/main/delete.js');
 const update = require('../routes/main/update.js');
-const favorites = require('../routes/favorites');
+const favAPI = require('../routes/favorites/apiRoutes.js');
+const favPage = require('../routes/favorites/pageRoutes.js');
+
 
 const  alterController = require('../controllers/main+api/alter.js')
 const commentsController = require('../controllers/main+api/comments.js')
@@ -34,7 +36,8 @@ app.use(cors());
 app.use(create);
 app.use(del);
 app.use(update);
-// app.use(favorites);
+app.use(favAPI);
+app.use(favPage);
 
 // error handling
 app.use((req, res, next) => {
