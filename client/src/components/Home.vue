@@ -11,31 +11,78 @@
       <button @click="getIt()" type="button" class="btn btn-danger">Danger</button>
 
   </div>
+  <div id="to-here"></div>
 </div>
 </template>
 
 <script>
 export default {
   name: 'Home',
-  data: {
-   
+  mounted () {
+
+        $(document).on("click", ".submit-comment", function (){
+            console.log('ho ho ho, bitch !!')
+            let id = $(this).attr('id')
+            console.log(id)
+        });
+
+
   },
+  data: {
+       id: ''
+  },
+
   methods: {
 
      getIt: function () {
-          console.log('hello');
             jQuery.ajax({
-              // console.log('fuuuuuck'),
                 type: 'GET',
                 url: 'http://localhost:8082/scraper',
-                // data: data,
                 dataType: 'json',
                 success: function (data) {
                     console.log('I did it !!!')
-                    console.log(data)
+                    for(var i=0;i<data.length;i++) {
+                    console.log(data[i]._id)
+                    console.log(data[i].title)
+                    console.log(data[i].summary)
+
+                    $("#to-here").append("<div class='card'><div class='card-body'>" +
+                    "<h3 class='card-title'>"+ data[i].title + "</h3><p class='card-text'>" +
+                    data[i].summary + "</p></div></div>   <input class='form-control mr-sm-2' type='search' placeholder='Comment' aria-label='Comment'>" + 
+                    "<button id='"+data[i]._id+"' class='submit-comment btn btn-outline-success my-2 my-sm-0' type='submit'>Comment</button>") 
+                   
+                    }
+                   
                 }
             });
         },
+        
+
+    
+
+    //  getIt: function () {
+    //         jQuery.ajax({
+    //             type: 'GET',
+    //             url: 'http://localhost:8082/scraper',
+    //             dataType: 'json',
+    //             success: function (data) {
+    //                 console.log('I did it !!!')
+    //                 for(var i=0;i<data.length;i++) {
+    //                 console.log(data[i]._id)
+    //                 console.log(data[i].title)
+    //                 console.log(data[i].summary)
+
+    //                 $("#to-here").append("<div class='card'><div class='card-body'>" +
+    //                 "<h3 class='card-title'>"+ data[i].title + "</h3><p class='card-text'>" +
+    //                 data[i].summary + "</p></div></div>   <input class='form-control mr-sm-2' type='search' placeholder='Comment' aria-label='Comment'>" + 
+    //                 "<button class='submit-comment btn btn-outline-success my-2 my-sm-0' type='submit'>Comment</button>") 
+                   
+    //                 }
+                   
+    //             }
+    //         });
+    //     },
+
   }
 }
 </script>
@@ -45,6 +92,7 @@ export default {
 .sta {
 
 }
+
 h1, h2 {
   font-weight: bold;
 }
