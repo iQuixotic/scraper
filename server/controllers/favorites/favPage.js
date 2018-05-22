@@ -45,13 +45,19 @@ exports.delThis = (res) => {
     }
 };
 
-// function to render favorites and comments
-exports.findAndAdd  = (res) => {
-    db.Article.find({})
-    .where( db.Article.favoriteList === true && db.Article.id === db.Comment.ArticleID)
-        .then(function (dbArticle, dbComment) {
-            res.json(dbArticle, dbComment)
+// update whether or not a summary is saved to favorites
+exports.hasFavUpdate = (req, res) => {
+    console.log(req.body.id)
+    console.log(db.Article._id)
+        db.Article.findByIdAndUpdate(req.body.id,
+        ({favoriteList: true})
+        )
+   // db.Article.update({ $where: db.Article._id == req.body.id, favoriteList: true })
+    
+        .then(function (dbArticle) {
+           res.json(dbArticle)
         }).catch(function (err) {
             res.json(err);
         });
-}
+    }
+    

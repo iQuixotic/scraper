@@ -38,12 +38,3 @@ exports.delAllComments = (res) => {
 }
 
 
-// // update comments when they exists
-// exports.hasCommentsUpdate = (res) => {
-//     db.Article.update({hasComments: true, favoriteList: true})
-//         .then(function (dbArticle) {
-//             res.json(dbArticle)
-//         }).catch(function (err) {
-//             res.json(err);
-//         });
-//     }

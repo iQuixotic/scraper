@@ -22,25 +22,6 @@ exports.delAll = (res) => {
 }
 
 
-// update whether or not a summary is saved to favorites
-exports.hasFavUpdate = (res) => {
-    if(favoriteList == false){
-    db.Article.update({favoriteList: true})
-        .then(function (dbArticle) {
-            res.json(dbArticle)
-        }).catch(function (err) {
-            res.json(err);
-        });
-    }else {
-        db.Article.update({favoriteList: false})
-        .then(function (dbArticle) {
-            res.json(dbArticle)
-        }).catch(function (err) {
-            res.json(err);
-        });
-    }
-}
-
 
 
 

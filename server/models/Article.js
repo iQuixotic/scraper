@@ -6,7 +6,8 @@ let ArticleModel = new Schema({
 
     title: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }, 
     summary: {
         type: String,
@@ -27,7 +28,6 @@ let ArticleModel = new Schema({
         type: Boolean,
         required: true
     }, 
-                    
 });
 
 let Article = mongoose.model('Article', ArticleModel);

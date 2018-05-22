@@ -1,10 +1,10 @@
 const express = require('express')
 const router = express.Router();
-const apiController = require('../../controllers/favorites/favAPI.js');
+const favPageController = require('../../controllers/favorites/favPage.js');
 
-// route for posting new favorites from database
+// route for dispaying database favorites
 router.post("/favorites", function (req, res){
-apiController.postAll(res);
+favPageController.hasFavUpdate(req,res);
 });
 
 module.exports =  router;

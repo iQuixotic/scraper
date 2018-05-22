@@ -27,7 +27,7 @@ export default {
             let comment = $('#comment-bar'+id).val();
             
             // something to hold data object
-            const sasquatch = {
+            const sasquatch = {         // maybe let 
               Comment: comment,
               ArticleID: id
             }           
@@ -52,20 +52,37 @@ export default {
           };
 
 });
-        // $(document).on("keyup", ".submit-comment", function (){
-        //   if(comment == headline)
-        //     console.log(id)
-        // });
+            $(document).on("click", ".save-fav", function (){
+              let id = $(this).attr('id')
+                let data = {
+                  id: id,
+                  otherID: id
+                }
+
+
+                console.log(data)
+                addToFavs(data);
+            function addToFavs(data){
+            $.ajax({
+                type: 'POST',
+                url: `http://localhost:8082/favorites`,
+                data: data,
+                success: function (data) {
+                  console.log(data)
+                    console.log('I have added you to favorites !!!')
+                }
+            });
+        }
+      });
 
   },
   data: {
-      //  id: '',
-      //  comment: '',
-      //  headline: ''
+
   },
 
   methods: {
 
+    //after the initial obj is scraped, run an ajax GET
      getIt: function () {
             jQuery.ajax({
                 type: 'GET',
@@ -80,11 +97,13 @@ export default {
                     "<h3 class='card-title'>"+ data[i].title + "</h3><p class='card-text'>" +
                     data[i].summary + "</p></div></div>   <input id='comment-bar"+data[i]._id+"' class=' form-control mr-sm-2' type='search' placeholder='Comment' aria-label='Comment'>" + 
                     "<button id='"+data[i]._id+"' class='padding submit-comment' type='submit'>Comment</button>"+
-                    "<button id='fav"+data[i]._id+"' class='padding save' type='submit'>Save</button></div></div>") 
+                    "<button id='"+data[i]._id+"' class='padding save save-fav' type='submit'>Save</button></div></div>") 
                     }
                 }
             });
         },
+
+        
           
       // commentAdd: function (id) {
       //  console.log('i am trying to work')

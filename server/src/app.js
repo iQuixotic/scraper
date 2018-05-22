@@ -33,8 +33,6 @@ app.use(bodyParser.urlencoded({
 app.use(morgan("dev"));
 app.use(cors());
 
-
-
 // use routes
 app.use(create);
 app.use(del);
@@ -59,12 +57,6 @@ app.use((error, req, res, next) => {
   })
 });
 
-// more error handling
-function log(string) {
-  let callerLine = new Error().stack.split("\n")[2];
-  let lineNumber = callerLine.match(/:(\d+):\d+\)/)[1];
-  console.log("Line " + lineNumber + ": " + string);
-}
 // - - - - - - - - - - - - - - - - - - 
 
 //listening port
