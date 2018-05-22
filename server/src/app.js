@@ -1,5 +1,7 @@
 
 const express = require('express');
+const serveStatic = require('serve-static');
+const path = require('path');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const mongoose = require("mongoose");
@@ -32,6 +34,14 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(morgan("dev"));
 app.use(cors());
+
+// use /dist as a middleware
+app.use("/", serveStatic ( path.join (__dirname, '/dist') ) )
+
+// Catch all routes and redirect to the index file
+app.get('*', function (req, res) {
+res.sendFile(__dirname + '/dist/index.html')
+})
 
 // use routes
 app.use(create);
