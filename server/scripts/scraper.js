@@ -6,7 +6,7 @@ const request = require("request");
 const db = require('../models/index.js');
 
 
-function scrape() {
+function scrape(req, res) {
     console.log("\n******************************************\n" +
                                  "Amazing Links " +
                 "\n******************************************\n");

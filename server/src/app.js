@@ -25,23 +25,21 @@ const commentsController = require('../controllers/main+api/comments.js')
 const fetchController = require('../controllers/main+api/fetch.js');
 
 //connect to the database news_db on the server
-mongoose.connect('mongodb://localhost/news_db')
+const connectMe = process.env.MONGODB_URI || 'mongodb://localhost/news_db'; 
+mongoose.connect(connectMe);
 mongoose.Promise = global.Promise;
-
+app.use(cors());
 // use morgan, bodyParser, and cors
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 app.use(morgan("dev"));
-app.use(cors());
+
 
 // use /dist as a middleware
-app.use("/", serveStatic ( path.join (__dirname, '/dist') ) )
-
-// Catch all routes and redirect to the index file
-app.get('*', function (req, res) {
-res.sendFile(__dirname + '/dist/index.html')
-})
+app.use("/", serveStatic ( path.join (__dirname, '../dist') ) )
+// app.use('/',serveStatic(__dirname + "/dist"));
+// console.log(path.join (__dirname, '../dist'))
 
 // use routes
 app.use(create);

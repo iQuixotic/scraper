@@ -10,8 +10,8 @@ const scrape = require('../../scripts/scraper.js');
 const db = require('../../models');
 
 // function for scraping new articles
-exports.addAll = function() {
-    scrape().then(results => {
+exports.addAll = function(req, res) {
+    scrape(req, res).then(results => {
 
         //create a new database entry for each scraped article and title
         for (i = 0; i < results.length; i++) {
@@ -21,7 +21,7 @@ exports.addAll = function() {
                     // provide a message to the page showing that scraping was sucessful
                         res.json({
                           msg: {
-                            message: 'The data has been scraped from https://www.nytimes.com/ :)'
+                            message: 'The data has been scraped :)'
                           }});                      
                 }).catch(function (err) {
                     return res.json(err);

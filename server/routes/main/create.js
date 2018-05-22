@@ -8,7 +8,7 @@ fetchController.findAll(res);
 });
 
 router.get("/scrape", function (req, res){
-fetchController.addAll(res);
+fetchController.addAll(req, res);
 });
 
 module.exports =  router;
