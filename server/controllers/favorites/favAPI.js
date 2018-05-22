@@ -9,18 +9,14 @@ const db = require('../../models');
 
 // post to page for a later retrieval 
 exports.postFavs = (res) => {
-    db.Article.find({})
-    .where(db.Article.favoriteList === true)
-        .then(function (dbArticle) {
-            res.json(dbArticle) // ({})
-        .then(db.Comment.find({}))
-        .where(db.Article._id === db.Comment.ArticleID)
-        (function (dbComment) {
+    db.Article.find({favoriteList: true, hasComments: true})
+            .then(function (dbArticle) {
+            res.json(dbArticle) 
         }).catch(function (err) {
             res.json(err);
         });
-    })
-}
+    }
+
 
 // function to render favorites and comments
 // exports.findAndAdd  = (res) => {
