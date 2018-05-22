@@ -23,13 +23,13 @@ exports.postFavs = (res) => {
 }
 
 // function to render favorites and comments
-exports.findAndAdd  = (res) => {
-    db.Article.find({})
-    .where( db.Article.favoriteList === true && db.Article.id === db.Comment.ArticleID)
-        .then(function (dbArticle, dbComment) {
-            res.json(dbArticle, dbComment)
-        }).catch(function (err) {
-            res.json(err);
-        });
-}
+// exports.findAndAdd  = (res) => {
+//     db.Article.find({})
+//     .where( db.Article.favoriteList === true || db.Article.id === db.Comment.ArticleID)
+//         .then(function (dbArticle, dbComment) {
+//             res.json(dbArticle, dbComment)
+//         }).catch(function (err) {
+//             res.json(err);
+//         });
+// }
 
