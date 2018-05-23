@@ -3,7 +3,6 @@ const router = express.Router();
 const mongoose = require("mongoose");
 
 // files
-const update = require('../../routes/favorites/pageRoutes.js');
 const db = require('../../models');
 
 // clear favorites page

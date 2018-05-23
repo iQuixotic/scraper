@@ -3,18 +3,9 @@ const router = express.Router();
 const favPageController = require('../../controllers/favorites/favPage.js');
 const favAPIController = require('../../controllers/favorites/favAPI.js');
 
-// route for dispaying database favorites
-router.get("/favorites", function (req, res){
-favPageController.hasFavUpdate(req, res);
-});
+// when this route is hit, doc will be added to favorites
+// in the database for later json extraction
+router.get("/favorites", favPageController.hasFavUpdate);
+router.post("/favorites", favPageController.hasFavUpdate);
 
-// routes that send information for which article to display in
-// the favorites page
-router.post("/giveMeFavorites", function (req, res){
-    favAPIController.postFavs(req, res);
-});
-
-router.get("/giveMeFavorites", function (req, res){
-    favAPIController.postFavs(req, res);
-});
 module.exports =  router;

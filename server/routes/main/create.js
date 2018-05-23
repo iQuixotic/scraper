@@ -3,12 +3,8 @@ const router = express.Router();
 const fetchController = require('../../controllers/main+api/fetch.js');
 
 // a route to scrape when hit and a route to show what has been scraped
-router.get("/show/json-of-scraped", function (req, res){
-fetchController.findAll(res);
-});
+router.get("/show/json-of-scraped", fetchController.findAll)
 
-router.get("/scrape", function (req, res){
-fetchController.addAll(req, res);
-});
+router.get("/scrape", fetchController.addAll)
 
 module.exports =  router;

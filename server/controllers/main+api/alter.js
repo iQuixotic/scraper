@@ -10,10 +10,10 @@ const scrape = require('../../scripts/scraper.js');
 const db = require('../../models');
 
 // clear out entire db
-exports.delAll = (res) => {
+exports.delAll = (req, res) => {
     db.Article.remove({})
         .then(function (dbArticle) {
-            res.json({
+            ({
                 Message: 'You"ve done it Now !! '
             });
         }).catch(function (err) {

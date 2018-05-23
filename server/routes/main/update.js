@@ -7,6 +7,5 @@ const commentsController = require('../../controllers/main+api/comments.js')
 router.get("/show/json-update",  commentsController.getComment);
 
 router.post("/show/json-update", commentsController.getComment);
-    // alterController.hasCommentsUpdate(res);
     
 module.exports =  router;

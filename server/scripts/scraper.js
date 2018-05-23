@@ -5,8 +5,7 @@ const request = require("request");
 
 const db = require('../models/index.js');
 
-
-function scrape(req, res) {
+scrape = (req, res) => {
     console.log("\n******************************************\n" +
                                  "Amazing Links " +
                 "\n******************************************\n");
@@ -14,7 +13,7 @@ function scrape(req, res) {
     let site = "https://www.nytimes.com/"
 
     // Making an axios request
-    return axios.get(site).then(function (res) {
+    return axios.get(site).then(function (res, req) {
 
         let $ = cheerio.load(res.data);
         let results = [];
@@ -41,6 +40,8 @@ function scrape(req, res) {
 
         });
         return results;
+    }).catch(function (err) {
+        res.json(err);
     });
 }
 

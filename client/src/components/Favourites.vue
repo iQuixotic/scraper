@@ -1,4 +1,5 @@
 <template>
+<div>
 
 <div class="jumbotron ">
   <div class="container ">
@@ -6,7 +7,11 @@
     <p class="lead"></p>
   </div>
 </div>
+<button type="button" id="mybutton" class="the-things btn btn-danger">ALL THE FAVORITES</button>
 
+<div id="favs"></div>
+
+</div>
 </template>
 
 <script>
@@ -14,36 +19,127 @@ export default {
   name: 'Favourites',
   mounted () {
 
+       let favDATA = []
+
         $(document).ready(function (){
+
+          
+
+         
+
+         
+
+          $.ajax({
+                type: 'GET',
+                url: 'http://localhost:8082/show/comments',
+           
+                success: function (commentsData) {
+                  favDATA.push(commentsData)
+                  console.log(commentsData)
+                       console.log('I have the commetns righcere !!!')
+                }
+          });
+
             
             $.ajax({
                 type: 'GET',
-                data: data,
-                url: 'http://localhost:8082/giveMeFavorites',
+                url: 'http://localhost:8082/show/my-favs',
            
-                success: function (data) {
-                  console.log(data)
-                    console.log('I did it oops again !!!')  
-                       console.log('I did it !!!')
-                    // for(var i=0;i<data.length;i++) {
+                success: function (artData) {
+                  favDATA.push(artData);
+                  console.log(favDATA)
+                    
+                    }                                                        
+                })
+          
+          $('#mybutton').click(function() {
+             console.log('yay')
+             keepOn(i);
+          })
+             
+                  console.log(favDATA)
+                  let arr = [0]
+                  let i=0;
+                  let j=0;
+                  // let arrlen=1; 
 
-                    //   // for each result, I will print out a styled card
-                    // $("#to-here").append("<div class='container'><div class='col-md-9'<div class='card'><div class='card-body'>" +
-                    // "<h3 class='card-title'>"+ data[i].title + "</h3><p class='card-text'>" +
-                    // data[i].summary + "</p></div></div>   <input id='comment-bar"+data[i]._id+"' class=' form-control mr-sm-2' type='search' placeholder='Comment' aria-label='Comment'>" + 
-                    // "<button id='"+data[i]._id+"' class='padding submit-comment' type='submit'>Comment</button>"+
-                    // "<button id='"+data[i]._id+"' class='padding save save-fav' type='submit'>Save</button></div></div>") 
-                    // }                                                        
-                }
-            });   
-        
-          }); 
+
+                  function keepOn(){
+            
+                  if(arr[0]<favDATA[1].length) {
+                  console.log(arr)
+                      // for each result, I will print out a styled card
+                    $("#favs").append(`<div class='container'><div class='col-md-9'><div class='card'><div class='card-body'>
+                    <h3 class='card-title'>${favDATA[1][i].title}</h3><p class='card-text'>
+                    ${favDATA[1][i].summary}</p></div></div>   <div id='comments-here${favDATA[1][i]._id}'></div>`)
+                    i++;
+                    arr.push(i);
+                    ifBlock();
+                  }  
+                  function ifBlock(){
+                  if(arr[i]<favDATA[1].length){
+                     keepOn()       
+                    //  }else if(arr2[j]<favDATA[0].length){
+                    //    i=0;
+                    //    j=0;
+                      //  checkAgainBatman();  
+                     } else{
+                        i=0;
+                        j=0;
+                       checkAgainBatman();  
+                       return console.log("I've done all i could")
+                     }                   
+                  }  
+
+                  // the most beautiful function in the world 
+                      function checkAgainBatman() {
+
+                        //compares the id's at current index of each
+                       if(Object.is(favDATA[0][j].ArticleID, favDATA[1][i]._id)){
+                           console.log("i'm doing it !!");
+                           console.log('j'+j);
+                           console.log('i:'+i);
+                           $(`#comments-here${favDATA[1][i]._id}`).append(`<div><h3>${favDATA[0][j].Comment}</h3></div> `);
+                           j++;
+                           console.log(favDATA[0][j].ArticleID !== favDATA[1][i]._id)
+                           console.log(i < favDATA[1].length)
+                           checkAgainBatman();                           
+                      }
+
+                      // if favoriteList array isn't at the end of its index, go to
+                      // the next index and compare the comment id's there
+                      else if(favDATA[0][j].ArticleID !== favDATA[1][i]._id && i < favDATA[1].length){
+                        console.log('nothing yet...')
+                        console.log('j'+j);
+                        console.log('i:'+i);
+                        i++;
+                        checkAgainBatman();
+
+                       // once all of favoriteList's array has been compared, increment
+                       // the comments array by 1 and loop back 
+                      } else if (favDATA[0][j].ArticleID !== favDATA[1][i]._id && favDATA[1][i]._id >= favDATA[1].length){
+                        console.log('j'+j);
+                        console.log('i:'+i);
+                        j++;
+                        checkAgainBatman();
+
+                        // when nothing is left to be compared, return 0
+                      } else{ console.log('weeeelllllll......'); return 0;}
+                  }
+
+
+          }
+                   
+     })
+          
   },
   data: {
-
+   
   },
 
   methods: {
+
+    
 
   }
 }
