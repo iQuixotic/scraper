@@ -23,10 +23,6 @@ export default {
 
         $(document).ready(function (){
 
-          
-
-         
-
          
 
           $.ajax({
@@ -61,13 +57,14 @@ export default {
                   let arr = [0]
                   let i=0;
                   let j=0;
-                  // let arrlen=1; 
-
+                  
 
                   function keepOn(){
             
+                    // favDATA[1] is Articles  where favoritedd    favDATA[2] is Comments
                   if(arr[0]<favDATA[1].length) {
                   console.log(arr)
+
                       // for each result, I will print out a styled card
                     $("#favs").append(`<div class='container'><div class='col-md-9'><div class='card'><div class='card-body'>
                     <h3 class='card-title'>${favDATA[1][i].title}</h3><p class='card-text'>
@@ -76,13 +73,10 @@ export default {
                     arr.push(i);
                     ifBlock();
                   }  
+
                   function ifBlock(){
                   if(arr[i]<favDATA[1].length){
-                     keepOn()       
-                    //  }else if(arr2[j]<favDATA[0].length){
-                    //    i=0;
-                    //    j=0;
-                      //  checkAgainBatman();  
+                     keepOn();  
                      } else{
                         i=0;
                         j=0;
