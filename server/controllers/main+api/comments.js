@@ -11,9 +11,9 @@ const db = require('../../models');
 // take the data coming in for a comment
 exports.getComment = (req, res) => {
     console.log(req.body.ArticleID)
-db.Article.findByIdAndUpdate(req.body.ArticleID,
-    ({hasComments: true, favoriteList: true}))
-
+// db.Article.findByIdAndUpdate(req.body.ArticleID,
+//     ({hasComments: true, favoriteList: true}))
+    changeCommentState(req, res);
     db.Comment.create(req.body)
 
         .then(function (dbComment) {
@@ -24,15 +24,15 @@ db.Article.findByIdAndUpdate(req.body.ArticleID,
         });
 }
 
-// changeCommentState = (req, res) => 
+changeCommentState = (req, res) => 
 
-// db.Article.findByIdAndUpdate(req.body.ArticleID,
-//     ({hasComments: true, favoriteList: true}))
-//     .then(function (dbArticle) {
-//     res.json(dbArticle)
-// }).catch(function (err) {
-//     res.json(err);
-// });
+db.Article.findByIdAndUpdate(req.body.ArticleID,
+    ({hasComments: true, favoriteList: true}))
+    .then(function (dbArticle) {
+    res.json(dbArticle)
+}).catch(function (err) {
+    res.json(err);
+});
 
 
 // clear out entire comment dbs
