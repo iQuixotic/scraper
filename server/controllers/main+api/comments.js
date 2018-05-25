@@ -13,12 +13,11 @@ exports.getComment = (req, res) => {
     console.log(req.body.ArticleID)
 // db.Article.findByIdAndUpdate(req.body.ArticleID,
 //     ({hasComments: true, favoriteList: true}))
-    changeCommentState(req, res);
+    
     db.Comment.create(req.body)
 
         .then(function (dbComment) {
-            res.json(dbComment);
-           
+            changeCommentState(req, res);
         }).catch(function (err) {
             res.json(err);
         });

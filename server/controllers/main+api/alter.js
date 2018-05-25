@@ -13,9 +13,7 @@ const db = require('../../models');
 exports.delAll = (req, res) => {
     db.Article.remove({})
         .then(function (dbArticle) {
-            ({
-                Message: 'You"ve done it Now !! '
-            });
+            res.send('You"ve done it Now !! ');
         }).catch(function (err) {
             res.json(err);
         });
