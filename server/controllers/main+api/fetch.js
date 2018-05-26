@@ -19,9 +19,7 @@ exports.addAll = (req, res, next) => {
             db.Article.create(results[i])
         }
 
-        {
-            message: 'You have sucessfully scraped the New York Times !! :)'
-        }
+        res.send( 'You have sucessfully scraped the New York Times !! :)')
     }).catch(function (err) {
         return res.json(err);
     });
